@@ -3,6 +3,7 @@ package com.selcote.highestLowest.controller;
 import com.selcote.highestLowest.service.HighestLowestService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,10 +32,19 @@ public class HighestLowestController {
      * or with status {@code 400 (Bad request)}.
      */
     @GetMapping("/{numbers}")
-    public String getCarrier(@PathVariable String numbers) {
+    public ResponseEntity<String> getResult(@PathVariable String numbers) {
 
-        LOGGER.debug("REST request to get Higest and Lowest : {}", numbers);
-        return highestLowestService.highAndLow(numbers);
+        LOGGER.debug("REST request to get Highest and Lowest : {}", numbers);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.add(
+                "Content-Type",
+                "application/json"
+        );
+
+        String result = highestLowestService.highAndLow(numbers);
+
+        return ResponseEntity.ok().headers(headers).body(result);
 
     }
 }
