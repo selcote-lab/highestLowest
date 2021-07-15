@@ -9,13 +9,13 @@ import java.util.stream.Stream;
 public class HighestLowestServiceImpl implements HighestLowestService {
     @Override
     public String highAndLow(String numbers) {
-        String[] chrs = numbers.split(" ");
 
-        int[] array = Stream.of(chrs)
-                .mapToInt(Integer::parseInt)
-                .sorted()
-                .toArray();
+        String [] digits = numbers.split(" ");
 
-        return array[array.length - 1] + " " + array[0] ;
+        int[] digitsConverted = Stream.of(digits)
+                                        .mapToInt(Integer::parseInt)
+                                        .toArray();
+
+        return digitsConverted[ digits.length - 1 ] + " " +  digitsConverted[ 0 ];
     }
 }
