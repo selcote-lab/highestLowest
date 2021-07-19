@@ -38,7 +38,7 @@ public class HighestLowestControllerIT {
     }
 
     @Test
-    void getResult() throws Exception {
+    void getResultTest() throws Exception {
 
         String numbers = "1 2 -3 4 5";
 

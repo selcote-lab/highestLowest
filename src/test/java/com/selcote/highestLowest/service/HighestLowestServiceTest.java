@@ -14,7 +14,7 @@ public class HighestLowestServiceTest {
     private  HighestLowestService highestLowestService;
 
     @Test
-    public void test1() {
+    public void highestLowestTest() {
 
         assertEquals(
                 "42 -9",

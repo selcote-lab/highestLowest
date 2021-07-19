@@ -10,12 +10,13 @@ public class HighestLowestServiceImpl implements HighestLowestService {
     @Override
     public String highAndLow(String numbers) {
 
-        String [] digits = numbers.split(" ");
+        String[] digits = numbers.split(" ");
 
-        int[] digitsConverted = Stream.of(digits)
-                                        .mapToInt(Integer::parseInt)
-                                        .toArray();
+        int[] digitsCoverted  = Stream.of(digits)
+                                    .mapToInt(Integer::parseInt)
+                                    .sorted()
+                                    .toArray();
 
-        return digitsConverted[ digits.length - 1 ] + " " +  digitsConverted[ 0 ];
+        return digitsCoverted[digitsCoverted.length - 1] + " " + digitsCoverted[0] ;
     }
 }
